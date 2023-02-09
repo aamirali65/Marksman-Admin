@@ -1,0 +1,873 @@
+<div class="container-fluid">
+  <!-- search-bar -->
+  <div class="bg-colors searchs h-100 p-4 my-3">
+    <form>
+      <input
+        type="text"
+        autocomplete="off"
+        placeholder="Enter Booking ID , Phone Number or Email"
+        [(ngModel)]="searches"
+        name="searches"
+        (keyup.enter)="search()"
+      />
+      <a (click)="search()">
+        <p class="material-icons anchor">search</p>
+      </a>
+    </form>
+  </div>
+  </div>
+  <section *ngIf="new_div">
+  <!-- end search-bar -->
+  <div class="theme_heading text-center">
+    <h2>Gel Blaster</h2>
+  </div>
+<div class="container-fluid">
+  <!-- date-picker -->
+  <section [hidden]="isDateSelected" *ngIf="new_div">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="datee">
+            <h3 class="h4">Please Select Date</h3>
+            <p>
+              {{ minDate.day }} - {{ ms[minDate.month] }} - {{ minDate.year }}
+            </p>
+          </div>
+        </div>
+        <form #myForm="ngForm" class="p-0">
+          <input
+            type="number"
+            name="inputValues"
+            id=""
+            class="member"
+            placeholder="Number of Players"
+            required
+            [(ngModel)]="inputNumber"
+          />
+          <p class="errorrs" *ngIf="member_error">
+            Please Select Specific Member !
+          </p>
+          <p class="errorrs" *ngIf="member_error2">
+            Number Of Players is required
+          </p>
+        </form>
+        <ngb-datepicker
+          [minDate]="minDate"
+          class="booking ng-valid ng-touched ng-dirty"
+          [(ngModel)]="selectedDate"
+          (dateSelect)="onDateSelect($event, myForm)"
+        ></ngb-datepicker>
+      </div>
+    </div>
+  </section>
+  <!-- end date-picker -->
+</div>
+<section *ngIf="time_slot" class="secc">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="d-flex justify-content-between align-content-center">
+          Select Your Time
+          <span class=""
+            >Each Slot Is For 15 Minutes
+            <span style="color: red;" class=""
+              >(You Can Only Select From one time frame)</span
+            ></span
+          ><span class="date">Tuesday-7 Feb-2023</span>
+        </h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">12:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >12:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >12:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >12:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >12:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">1:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >1:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >1:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >1:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >1:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">2:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >2:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >2:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >2:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >2:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">3:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >3:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >3:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >3:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >3:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">4:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >4:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >4:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >4:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >4:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">5:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >5:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >5:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >5:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >5:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">6:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >6:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >6:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >6:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >6:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">7:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >7:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >7:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >7:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >7:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">8:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >8:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >8:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >8:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >8:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">9:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >9:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >9:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >9:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >9:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">10:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >10:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >10:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >10:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >10:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gel-slots">
+                    <h4 class="">11:00 PM</h4>
+                    <ul class="gell-slots" name="">
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="00" name="" /><span
+                            class=""
+                            >11:00</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="15" name="" /><span
+                            class=""
+                            >11:15</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="30" name="" /><span
+                            class=""
+                            >11:30</span
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="time-btn">
+                          <input type="checkbox" value="45" name="" /><span
+                            class=""
+                            >11:45</span
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="buttons_row d-flex justify-content-between">
+              <button class="theme_btnn" (click)="onBack1()">
+                <i class="fa-regular fa-arrow-left-long"></i>
+                Back
+              </button>
+              <button class="theme_btnn" (click)="onFront()">
+                Next
+                <i class="fa-regular fa-arrow-right-long"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="nextPage" class="my-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 booking_final">
+        <h3 class="text-center d-flex justify-content-between">
+          Gel Blaster Game Details
+          <span>Total Players 4</span>
+        </h3>
+        <div class="row borderr">
+          <div class="col-md-8 player_data">
+            <h3>
+              What are Gel Blaster games?
+            </h3>
+            <p>
+              Gel Blaster games are a type of recreational activity that
+              involves players using gel blaster guns, which shoot small
+              spherical gel balls, to engage in simulated combat scenarios. The
+              rules and description of these games can vary depending on the
+              specific organization or venue hosting the event.
+            </p>
+            <h3>Rules and Regulations</h3>
+            <ul>
+              <li>
+                Players must wear appropriate protective gear, such as eye
+                protection, during the game.
+              </li>
+              <li>
+                Players must not point gel blaster guns at other players outside
+                of the designated game area.
+              </li>
+              <li>
+                Players must not modify gel blaster guns to increase their power
+                or range.
+              </li>
+              <li>
+                Players must not bring their own gel balls to the game, as the
+                venue will provide them.
+              </li>
+              <li>
+                Players must follow the instructions of the game marshals or
+                referees at all times.
+              </li>
+              <li>
+                Players must not use any type of real firearms or replica
+                firearms.
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <div class="box3 text-light">
+              <div class="das">
+                <h3>Booking Details</h3>
+                <p class="material-icons text-danger closess" (click)="boxes()">
+                  close
+                </p>
+              </div>
+              <table class="table tabless text-light">
+                <thead></thead>
+                <tbody class="tbodyy">
+                  <tr
+                    [ngClass]="{'errorr': booking_data.get('name').invalid && submittedd}"
+                  >
+                    <th scope="row" class="th">Name:</th>
+                    <td>
+                      <input
+                        type="text"
+                        class="input_n"
+                        name="name"
+                        formControlName="name"
+                        required
+                        autocomplete="off"
+                      />
+                    </td>
+                  </tr>
+                  <tr
+                    [ngClass]="{'errorr': booking_data.get('number').invalid && submittedd}"
+                  >
+                    <th scope="row" class="th">Number:</th>
+                    <td>
+                      <input
+                        type="number"
+                        class="input_n"
+                        name="number"
+                        formControlName="number"
+                        required
+                        autocomplete="off"
+                      />
+                    </td>
+                  </tr>
+                  <tr
+                    [ngClass]="{'errorr': booking_data.get('email').invalid && submittedd}"
+                  >
+                    <th scope="row" class="th">Email:</th>
+                    <td>
+                      <input
+                        type="email"
+                        class="input_n"
+                        name="email"
+                        formControlName="email"
+                        required
+                        autocomplete="off"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Date:</th>
+                    <td><span>2-2-2022</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Time:</th>
+                    <td><span>9:00 To 10:00</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">You Have Booked For:</th>
+                    <td><span>2h 5 min</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Number of players:</th>
+                    <td>
+                      <span>16</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total:</th>
+                    <td><span>4000</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="btnn">
+              <div class="row">
+                <div class="col-md-6">
+                  <select
+                    class="form-select mb-3"
+                    aria-label="Default select example"
+                    formControlName="payment_status"
+                  >
+                    <option selected hidden>Paymet</option>
+                    <option value="Paid">Paid</option>
+                    <option value="Unpaid">Unpaid</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <select
+                    class="form-select mb-3"
+                    aria-label="Default select example"
+                    formControlName="status"
+                    name="status"
+                  >
+                    <option selected hidden>Status</option>
+                    <option value="Booked">Booked</option>
+                    <option value="Cancel">Cancel</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="btnx">
+                <button class="theme_btnn" (click)="onBack()">BACK</button>
+                <button class="theme_btnn">Confirm Booking</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+ <!-- search-data -->
+ <div class="row main-div" *ngIf="div">
+  <div class="col-md-8">
+      <div class="boxx text-light">
+          <h3 class="mb-3">Players Details</h3>
+          <table class="table text-light">
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Number</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Action</th>
+                  </tr>
+              </thead>
+              <tbody *ngIf="search_item">
+
+                  <tr *ngFor="let player of responseData[0].player;index as i" [ngClass]="{'disable':player['status'] == '2' }">
+                      <th scope="row">{{i+1}}</th>
+                      <td *ngIf="!isEditing" (dblclick)="isEditing = true"><span class="span">{{player['name']}}</span></td>
+                      <td *ngIf="isEditing"><input [(ngModel)]="player['name']" class="inputs"></td>
+                      <td *ngIf="!isEditing" (dblclick)="isEditing = true"><span class="span">{{player['number']}}</span></td>
+                      <td *ngIf="isEditing"><input [(ngModel)]="player['number']" class="inputs"></td>
+                      <td>{{player['ticket_price']}}</td>
+
+                      <td>
+                          <div class=" dltt">
+                              <span *ngIf="isloading" class="loaderrr"></span>
+                              <a class="material-icons dl" *ngIf="player['status'] == 1 && !isloading" data-toggle="tooltip" data-placement="top" title="Delete">delete</a>
+                          <a class="material-icons dl res" *ngIf="player['status'] == 2 && !isloading" data-toggle="tooltip" data-placement="top" title="Restore">refresh</a>
+                              <!-- <a class="material-icons" data-toggle="tooltip" data-placement="top" title="Edit">manage_accounts</a> -->
+                          </div>
+                      </td>
+                  </tr>
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="box2 text-light">
+          <div class="das">
+              <h3>Booking Details</h3>
+              <p class="material-icons text-danger closess" (click)="boxes1()"> close</p>
+          </div>
+          <table class="table tabless text-light">
+              <thead>
+                  <tr>
+                      <th scope="row">Booking ID: </th>
+                      <td> #{{user_detail.id}}</td>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">Name: </th>
+                      <td> {{user_detail.name}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Number: </th>
+                      <td> {{user_detail.phone_no}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Email: </th>
+                      <td> {{user_detail.email}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Booking Date: </th>
+                      <td> {{(user_detail.date) }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Slot: </th>
+                      <td> {{user_detail['slot'][0]['name']}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">No Of Players: </th>
+                      <td> {{count}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Exclusive: </th>
+                      <td>{{user_detail.exclusivity}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Status: </th>
+                      <td> <span [ngClass]="{'booked':user_detail.status == 'Booked' , 'expired':user_detail.status == 'Expired', 'hold':user_detail.status == 'Hold', 'cancel':user_detail.status == 'Cancel'}">{{user_detail.status}}</span></td>
+                  </tr>
+
+                  <tr *ngIf="user_detail.status != 'Booked'">
+                      <th scope="row">Expire On: </th>
+                      <td> {{user_detail.exp_date}}</td>
+                  </tr>
+                  <tr *ngIf="user_detail.status != 'Booked'">
+                      <th scope="row">Time Left: </th>
+                      <td> {{user_detail.status == "Expired" ? '00:00' : user_detail.time_left}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Booked Date: </th>
+                      <td> {{ (user_detail.created_at)}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Total: </th>
+                      <td>{{ex_val}}</td>
+                  </tr>
+
+              </tbody>
+          </table>
+      </div>
+      <form>
+          <div class="btnn">
+              <div class="row">
+
+                  <div class="col-md-6">
+                      <select class="form-select mb-3" aria-label="Default select example" formControlName="payment_status" [ngClass]="{'disabled':user_detail.status == 'Booked'}">
+                <option selected hidden>Paymet</option>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+            </select>
+                      <!-- <span class="error" *ngIf="submited && paintball_update.controls.status.errors?.required">Required</span> -->
+                  </div>
+                  <div class="col-md-6">
+                      <select class="form-select mb-3" aria-label="Default select example" formControlName="status" name="status" [ngClass]="{'disabled':user_detail.status == 'Booked'}">
+                <option selected hidden>Status</option>
+                <option value="Booked">Booked</option>
+                <option value="Cancel">Cancel</option>
+            </select>
+                      <!-- <span class="error" *ngIf="submited && paintball_update.controls.status.errors?.required">Required</span> -->
+                  </div>
+
+              </div>
+
+              <button class="pdf theme_btnn float-end" [ngClass]="{'disabled':user_detail.status == 'Booked'}">Confirm Booking</button>
+          </div>
+      </form>
+  </div>
+</div>
+<!-- end search-data -->

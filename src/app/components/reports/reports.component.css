@@ -1,0 +1,22 @@
+td{
+    color: white !important;
+}
+.form-check-input {
+    width: 1em;
+    height: 1em;
+    margin-top: 0.25em;
+    vertical-align: top;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid rgba(0,0,0,0.25);
+    appearance: none;
+}
+.table{
+    border-color: #000000 !important;
+}
+.table-hover>tbody>tr:hover {
+    /* --bs-table-accent-bg: var(--bs-table-hover-bg); */
+    color: rgba(255, 255, 255, 0.958) !important;
+}
